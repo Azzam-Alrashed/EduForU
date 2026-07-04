@@ -1,0 +1,48 @@
+---
+const problems = [
+  {
+    icon: '🌐',
+    title: 'محتوى إنجليزي مشتت',
+    description: 'فيديوهات يوتيوب ودورات عالمية لا تناسب مستواك ولا سياقك المحلي.',
+  },
+  {
+    icon: '🧭',
+    title: 'ما أعرف وش أدرس بعد',
+    description: 'تبدأ متحمّس ثم تضيع — بدون خطة واضحة لكل أسبوع.',
+  },
+  {
+    icon: '💬',
+    title: 'ما في أحد يساعدك',
+    description: 'تتعثر في مشكلة برمجية وما تعرف مين تسأل بثقة.',
+  },
+];
+---
+
+<section class="bg-white px-4 py-16 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-6xl">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold text-navy sm:text-4xl">ليش التعلّم الذاتي صعب؟</h2>
+      <p class="mt-4 text-lg text-slate-600">
+        معظم الطلاب يواجهون نفس التحديات — EduForU صُمّم لحلّها.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        problems.map((item, i) => (
+          <article
+            class:list={[
+              'animate-fade-in-up rounded-2xl border border-slate-200 bg-cream p-6 shadow-sm',
+              i === 1 && 'animate-delay-1',
+              i === 2 && 'animate-delay-2',
+            ]}
+          >
+            <span class="text-3xl" aria-hidden="true">{item.icon}</span>
+            <h3 class="mt-4 text-xl font-bold text-navy">{item.title}</h3>
+            <p class="mt-2 leading-relaxed text-slate-600">{item.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

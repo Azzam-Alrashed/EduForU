@@ -1,0 +1,205 @@
+---
+import { tutorSubjects, experienceYears } from '../lib/constants';
+---
+
+<section id="tutors" class="px-4 py-16 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-6xl">
+    <div class="grid items-start gap-12 lg:grid-cols-2">
+      <div class="order-2 lg:order-1">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <h3 class="text-xl font-bold text-navy">نموذج اهتمام المدرسين</h3>
+          <p class="mt-2 text-sm text-slate-600">نبحث عن مدرسي برمجة يتحدثون العربية.</p>
+
+          <form id="tutor-form" class="relative mt-6 space-y-4" novalidate>
+            <div class="absolute -left-[9999px]" aria-hidden="true">
+              <label for="tutor-website">لا تملأ هذا الحقل</label>
+              <input type="text" id="tutor-website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div>
+              <label for="tutor-name" class="mb-1.5 block text-sm font-medium text-navy">الاسم</label>
+              <input
+                type="text"
+                id="tutor-name"
+                name="name"
+                required
+                autocomplete="name"
+                class="w-full rounded-xl border border-slate-300 bg-cream px-4 py-2.5 text-navy transition focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
+              />
+            </div>
+
+            <div>
+              <label for="tutor-email" class="mb-1.5 block text-sm font-medium text-navy">البريد الإلكتروني</label>
+              <input
+                type="email"
+                id="tutor-email"
+                name="email"
+                required
+                dir="ltr"
+                autocomplete="email"
+                class="w-full rounded-xl border border-slate-300 bg-cream px-4 py-2.5 text-start text-navy transition focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
+              />
+            </div>
+
+            <fieldset>
+              <legend class="mb-2 text-sm font-medium text-navy">ما تدرّس <span class="text-red-500">*</span></legend>
+              <div class="grid grid-cols-2 gap-2">
+                {
+                  tutorSubjects.map((s) => (
+                    <label class="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 bg-cream px-3 py-2 text-sm transition has-checked:border-teal has-checked:bg-teal/5">
+                      <input type="checkbox" name="subjects" value={s.value} class="accent-teal" />
+                      <span>{s.label}</span>
+                    </label>
+                  ))
+                }
+              </div>
+            </fieldset>
+
+            <div>
+              <label for="tutor-experience" class="mb-1.5 block text-sm font-medium text-navy">سنوات الخبرة</label>
+              <select
+                id="tutor-experience"
+                name="experience"
+                required
+                class="w-full rounded-xl border border-slate-300 bg-cream px-4 py-2.5 text-navy transition focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
+              >
+                <option value="">اختر الخبرة</option>
+                {experienceYears.map((e) => <option value={e.value}>{e.label}</option>)}
+              </select>
+            </div>
+
+            <div>
+              <label for="tutor-link" class="mb-1.5 block text-sm font-medium text-navy">رابط LinkedIn أو GitHub (اختياري)</label>
+              <input
+                type="url"
+                id="tutor-link"
+                name="profile_url"
+                dir="ltr"
+                placeholder="https://"
+                class="w-full rounded-xl border border-slate-300 bg-cream px-4 py-2.5 text-start text-navy transition focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
+              />
+            </div>
+
+            <div>
+              <label for="tutor-notes" class="mb-1.5 block text-sm font-medium text-navy">ملاحظات (اختياري)</label>
+              <textarea
+                id="tutor-notes"
+                name="notes"
+                rows="3"
+                class="w-full resize-none rounded-xl border border-slate-300 bg-cream px-4 py-2.5 text-navy transition focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
+              ></textarea>
+            </div>
+
+            <div id="tutor-form-message" class="hidden rounded-xl p-3 text-sm" role="alert"></div>
+
+            <button
+              type="submit"
+              id="tutor-submit"
+              class="w-full rounded-full bg-navy py-3 font-semibold text-white transition hover:bg-navy-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              انضم كمدرس
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="order-1 lg:order-2">
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">للمدرسين</h2>
+        <p class="mt-4 text-lg text-slate-600">
+          انضم كمدرّس مبكر واستقبل طلابًا يأتون بسياق واضح.
+        </p>
+
+        <ul class="mt-8 space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-navy/10 text-sm text-navy" aria-hidden="true">✓</span>
+            <span class="text-slate-700">الطلاب يصلون ومعهم مسارهم ونقاط ضعفهم — جلسات أكثر فعالية</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-navy/10 text-sm text-navy" aria-hidden="true">✓</span>
+            <span class="text-slate-700">دخل مرن من سوق مدرسين موجّه لمنطقة الشرق الأوسط</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-navy/10 text-sm text-navy" aria-hidden="true">✓</span>
+            <span class="text-slate-700">فرصة للانضمام مبكرًا وبناء سمعتك على المنصة</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { createClient } from '@supabase/supabase-js';
+
+  const form = document.getElementById('tutor-form') as HTMLFormElement;
+  const messageEl = document.getElementById('tutor-form-message') as HTMLDivElement;
+  const submitBtn = document.getElementById('tutor-submit') as HTMLButtonElement;
+
+  function showMessage(text: string, type: 'success' | 'error') {
+    messageEl.textContent = text;
+    messageEl.classList.remove('hidden', 'bg-teal/10', 'text-teal-dark', 'bg-red-50', 'text-red-700');
+    if (type === 'success') {
+      messageEl.classList.add('bg-teal/10', 'text-teal-dark');
+    } else {
+      messageEl.classList.add('bg-red-50', 'text-red-700');
+    }
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const honeypot = (form.elements.namedItem('website') as HTMLInputElement)?.value;
+    if (honeypot) return;
+
+    const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+    const experience = (form.elements.namedItem('experience') as HTMLSelectElement).value;
+    const profileUrl = (form.elements.namedItem('profile_url') as HTMLInputElement).value.trim() || null;
+    const notes = (form.elements.namedItem('notes') as HTMLTextAreaElement).value.trim() || null;
+
+    const subjects = Array.from(
+      form.querySelectorAll<HTMLInputElement>('input[name="subjects"]:checked'),
+    ).map((el) => el.value);
+
+    if (subjects.length === 0) {
+      showMessage('اختر موضوعًا واحدًا على الأقل تدرّسه.', 'error');
+      return;
+    }
+
+    const url = import.meta.env.PUBLIC_SUPABASE_URL;
+    const key = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!url || !key) {
+      showMessage('النموذج غير مُعدّ بعد. تواصل معنا على hello@eduforu.com', 'error');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'جاري الإرسال...';
+
+    const supabase = createClient(url, key);
+    const { error } = await supabase.from('tutor_interest').insert({
+      name,
+      email,
+      subjects,
+      experience,
+      profile_url: profileUrl,
+      notes,
+    });
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'انضم كمدرس';
+
+    if (error) {
+      if (error.code === '23505') {
+        showMessage('هذا البريد مسجّل مسبقًا.', 'error');
+      } else {
+        showMessage('حدث خطأ. حاول مرة أخرى أو راسلنا على hello@eduforu.com', 'error');
+      }
+      return;
+    }
+
+    showMessage('شكرًا لاهتمامك! سنتواصل معك قريبًا.', 'success');
+    form.reset();
+  });
+</script>

@@ -1,0 +1,34 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-slate-200 bg-navy px-4 py-12 text-white sm:px-6">
+  <div class="mx-auto max-w-6xl">
+    <div class="flex flex-col items-center justify-between gap-8 sm:flex-row sm:items-start">
+      <div class="text-center sm:text-start">
+        <p class="text-2xl font-bold">
+          Edu<span class="text-teal">For</span>U
+        </p>
+        <p class="mt-2 max-w-sm text-sm text-slate-400">
+          منصة عربية لتعلّم البرمجة لطلاب الثانوية — بخطة مصممة لك.
+        </p>
+      </div>
+
+      <div class="text-center sm:text-start">
+        <p class="text-sm font-semibold text-slate-300">تواصل</p>
+        <a
+          href="mailto:hello@eduforu.com"
+          class="mt-2 inline-block text-teal transition hover:text-teal/80"
+          dir="ltr"
+        >
+          hello@eduforu.com
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-10 border-t border-slate-700 pt-6 text-center text-xs text-slate-500">
+      <p>نستخدم بريدك الإلكتروني فقط لإشعارك بإطلاق المنصة.</p>
+      <p class="mt-2">© {year} EduForU. جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+</footer>

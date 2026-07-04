@@ -1,0 +1,46 @@
+---
+import PathMockup from './PathMockup.astro';
+---
+
+<section class="relative overflow-hidden px-4 py-16 sm:px-6 sm:py-24">
+  <div class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute -start-24 top-0 h-72 w-72 rounded-full bg-teal/10 blur-3xl"></div>
+    <div class="absolute -end-24 bottom-0 h-72 w-72 rounded-full bg-coral/10 blur-3xl"></div>
+  </div>
+
+  <div class="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+    <div class="animate-fade-in-up text-center lg:text-start">
+      <span class="mb-4 inline-flex items-center rounded-full border border-teal/20 bg-teal/10 px-3 py-1 text-sm font-medium text-teal-dark">
+        قريبًا — انضم مبكرًا
+      </span>
+
+      <h1 class="mt-4 text-4xl font-bold leading-tight tracking-tight text-navy sm:text-5xl lg:text-6xl">
+        تعلّم البرمجة
+        <span class="text-teal"> بخطة مصممة لك</span>
+      </h1>
+
+      <p class="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
+        تقييم سريع، خطة أسبوعية بالعربي، ومدرس يساعدك عندما تتعثر — مصمّم لطلاب الثانوية في المنطقة.
+      </p>
+
+      <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+        <a
+          href="#students"
+          class="w-full rounded-full bg-teal px-8 py-3.5 text-center text-base font-semibold text-white shadow-lg shadow-teal/25 transition hover:bg-teal-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:w-auto"
+        >
+          انضم لقائمة الانتظار
+        </a>
+        <a
+          href="#tutors"
+          class="w-full rounded-full border border-slate-300 bg-white px-8 py-3.5 text-center text-base font-semibold text-navy transition hover:border-teal hover:text-teal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:w-auto"
+        >
+          أنا مدرس
+        </a>
+      </div>
+    </div>
+
+    <div class="animate-fade-in-up animate-delay-2 flex justify-center lg:justify-end">
+      <PathMockup />
+    </div>
+  </div>
+</section>

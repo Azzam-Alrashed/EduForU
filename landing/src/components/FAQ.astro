@@ -1,0 +1,53 @@
+---
+const faqs = [
+  {
+    question: 'هل الخدمة مجانية؟',
+    answer: 'التسجيل في قائمة الانتظار مجاني. عند الإطلاق، سيكون هناك خيارات مجانية ومميزة. جلسات المدرسين تُسعّر بشكل منفصل.',
+  },
+  {
+    question: 'لأي فئة عمرية؟',
+    answer: 'نستهدف طلاب الثانوية (14–18 سنة) في منطقة الشرق الأوسط وشمال أفريقيا.',
+  },
+  {
+    question: 'بأي لغة المحتوى؟',
+    answer: 'المنصة عربية أولًا. مصطلحات البرمجة الإنجليزية الشائعة تبقى كما هي حيث يلزم.',
+  },
+  {
+    question: 'متى الإطلاق؟',
+    answer: 'نعمل على الإطلاق قريبًا. سجّل في قائمة الانتظار لنخبرك أولًا.',
+  },
+  {
+    question: 'كيف يعمل الدفع للمدرسين؟',
+    answer: 'EduForU سوق يربط الطلاب بالمدرسين. الطالب يدفع مقابل الجلسة والمنصة تأخذ عمولة بسيطة. التفاصيل تُعلن عند الإطلاق.',
+  },
+  {
+    question: 'هل أحتاج خبرة برمجية سابقة؟',
+    answer: 'لا. التقييم الأولي يحدّد مستواك ويبني مسارًا يناسبك — سواء مبتدئًا تمامًا أو لديك أساس.',
+  },
+];
+---
+
+<section id="faq" class="bg-white px-4 py-16 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-3xl">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold text-navy sm:text-4xl">الأسئلة الشائعة</h2>
+      <p class="mt-4 text-lg text-slate-600">إجابات سريعة على ما يهمك</p>
+    </div>
+
+    <div class="mt-10 space-y-3">
+      {
+        faqs.map((faq) => (
+          <details class="group rounded-xl border border-slate-200 bg-cream">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold text-navy marker:content-none [&::-webkit-details-marker]:hidden">
+              {faq.question}
+              <span class="shrink-0 text-teal transition group-open:rotate-180" aria-hidden="true">▼</span>
+            </summary>
+            <p class="border-t border-slate-200 px-5 pb-5 pt-4 leading-relaxed text-slate-600">
+              {faq.answer}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

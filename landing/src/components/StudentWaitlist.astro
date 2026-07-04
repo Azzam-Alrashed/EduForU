@@ -1,0 +1,181 @@
+---
+import { menaCountries, gradeLevels, codingGoals } from '../lib/constants';
+---
+
+<section id="students" class="bg-white px-4 py-16 sm:px-6 sm:py-20">
+  <div class="mx-auto max-w-6xl">
+    <div class="grid items-start gap-12 lg:grid-cols-2">
+      <div>
+        <h2 class="text-3xl font-bold text-navy sm:text-4xl">للطلاب</h2>
+        <p class="mt-4 text-lg text-slate-600">
+          انضم لقائمة الانتظار واحصل على وصول مبكر عند الإطلاق.
+        </p>
+
+        <ul class="mt-8 space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal/10 text-sm text-teal-dark" aria-hidden="true">✓</span>
+            <span class="text-slate-700">محتوى وخطة بالعربي — مصمّمة لطلاب الثانوية</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal/10 text-sm text-teal-dark" aria-hidden="true">✓</span>
+            <span class="text-slate-700">مسار يتكيّف مع مستواك — مو دورة عامة 40 ساعة</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal/10 text-sm text-teal-dark" aria-hidden="true">✓</span>
+            <span class="text-slate-700">مهام يومية واضحة — تعرف وش تسوي اليوم</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="rounded-2xl border border-slate-200 bg-cream p-6 shadow-sm sm:p-8">
+        <h3 class="text-xl font-bold text-navy">قائمة انتظار الطلاب</h3>
+        <p class="mt-2 text-sm text-slate-600">سنرسل لك بريدًا عند الإطلاق فقط.</p>
+
+        <form id="student-form" class="relative mt-6 space-y-4" novalidate>
+          <div class="absolute -left-[9999px]" aria-hidden="true">
+            <label for="student-website">لا تملأ هذا الحقل</label>
+            <input type="text" id="student-website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div>
+            <label for="student-name" class="mb-1.5 block text-sm font-medium text-navy">الاسم</label>
+            <input
+              type="text"
+              id="student-name"
+              name="name"
+              required
+              autocomplete="name"
+              class="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-navy transition focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
+            />
+          </div>
+
+          <div>
+            <label for="student-email" class="mb-1.5 block text-sm font-medium text-navy">البريد الإلكتروني</label>
+            <input
+              type="email"
+              id="student-email"
+              name="email"
+              required
+              dir="ltr"
+              autocomplete="email"
+              class="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-start text-navy transition focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
+            />
+          </div>
+
+          <div>
+            <label for="student-grade" class="mb-1.5 block text-sm font-medium text-navy">الصف الدراسي</label>
+            <select
+              id="student-grade"
+              name="grade"
+              required
+              class="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-navy transition focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
+            >
+              <option value="">اختر صفّك</option>
+              {gradeLevels.map((g) => <option value={g.value}>{g.label}</option>)}
+            </select>
+          </div>
+
+          <div>
+            <label for="student-goal" class="mb-1.5 block text-sm font-medium text-navy">هدفك في البرمجة (اختياري)</label>
+            <select
+              id="student-goal"
+              name="goal"
+              class="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-navy transition focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
+            >
+              <option value="">اختر هدفك</option>
+              {codingGoals.map((g) => <option value={g.value}>{g.label}</option>)}
+            </select>
+          </div>
+
+          <div>
+            <label for="student-country" class="mb-1.5 block text-sm font-medium text-navy">الدولة (اختياري)</label>
+            <select
+              id="student-country"
+              name="country"
+              class="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-navy transition focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/20"
+            >
+              <option value="">اختر دولتك</option>
+              {menaCountries.map((c) => <option value={c.value}>{c.label}</option>)}
+            </select>
+          </div>
+
+          <div id="student-form-message" class="hidden rounded-xl p-3 text-sm" role="alert"></div>
+
+          <button
+            type="submit"
+            id="student-submit"
+            class="w-full rounded-full bg-teal py-3 font-semibold text-white transition hover:bg-teal-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            انضم لقائمة الانتظار
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { createClient } from '@supabase/supabase-js';
+
+  const form = document.getElementById('student-form') as HTMLFormElement;
+  const messageEl = document.getElementById('student-form-message') as HTMLDivElement;
+  const submitBtn = document.getElementById('student-submit') as HTMLButtonElement;
+
+  function showMessage(text: string, type: 'success' | 'error') {
+    messageEl.textContent = text;
+    messageEl.classList.remove('hidden', 'bg-teal/10', 'text-teal-dark', 'bg-red-50', 'text-red-700');
+    if (type === 'success') {
+      messageEl.classList.add('bg-teal/10', 'text-teal-dark');
+    } else {
+      messageEl.classList.add('bg-red-50', 'text-red-700');
+    }
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const honeypot = (form.elements.namedItem('website') as HTMLInputElement)?.value;
+    if (honeypot) return;
+
+    const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+    const grade = (form.elements.namedItem('grade') as HTMLSelectElement).value;
+    const goal = (form.elements.namedItem('goal') as HTMLSelectElement).value || null;
+    const country = (form.elements.namedItem('country') as HTMLSelectElement).value || null;
+
+    const url = import.meta.env.PUBLIC_SUPABASE_URL;
+    const key = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!url || !key) {
+      showMessage('النموذج غير مُعدّ بعد. تواصل معنا على hello@eduforu.com', 'error');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'جاري الإرسال...';
+
+    const supabase = createClient(url, key);
+    const { error } = await supabase.from('student_waitlist').insert({
+      name,
+      email,
+      grade,
+      goal,
+      country,
+    });
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'انضم لقائمة الانتظار';
+
+    if (error) {
+      if (error.code === '23505') {
+        showMessage('هذا البريد مسجّل مسبقًا في قائمة الانتظار.', 'error');
+      } else {
+        showMessage('حدث خطأ. حاول مرة أخرى أو راسلنا على hello@eduforu.com', 'error');
+      }
+      return;
+    }
+
+    showMessage('تم التسجيل! سنراسلك عند الإطلاق.', 'success');
+    form.reset();
+  });
+</script>

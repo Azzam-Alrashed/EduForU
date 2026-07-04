@@ -1,0 +1,62 @@
+---
+const steps = [
+  { week: 'الأسبوع 1', title: 'أساسيات Python', progress: 100, status: 'done' },
+  { week: 'الأسبوع 2', title: 'المتغيرات والشروط', progress: 60, status: 'active' },
+  { week: 'الأسبوع 3', title: 'الحلقات والدوال', progress: 0, status: 'upcoming' },
+];
+---
+
+<div class="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-200/50">
+  <div class="mb-6 flex items-center justify-between">
+    <div>
+      <p class="text-sm font-medium text-slate-500">مسارك الشخصي</p>
+      <p class="text-lg font-bold text-navy">تعلّم Python</p>
+    </div>
+    <span class="rounded-full bg-teal/10 px-3 py-1 text-xs font-semibold text-teal-dark">60%</span>
+  </div>
+
+  <div class="space-y-4">
+    {
+      steps.map((step) => (
+        <div
+          class:list={[
+            'rounded-xl border p-4 transition',
+            step.status === 'active' && 'border-teal bg-teal/5',
+            step.status === 'done' && 'border-slate-200 bg-slate-50',
+            step.status === 'upcoming' && 'border-slate-100 bg-white opacity-60',
+          ]}
+        >
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <p class="text-xs font-medium text-slate-500">{step.week}</p>
+              <p class="font-semibold text-navy">{step.title}</p>
+            </div>
+            {step.status === 'done' && (
+              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-teal text-xs text-white" aria-hidden="true">
+                ✓
+              </span>
+            )}
+            {step.status === 'active' && (
+              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-teal/20 text-xs font-bold text-teal-dark" aria-hidden="true">
+                →
+              </span>
+            )}
+          </div>
+          {step.progress > 0 && step.status !== 'upcoming' && (
+            <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-200">
+              <div
+                class="h-full rounded-full bg-teal transition-all"
+                style={`width: ${step.progress}%`}
+              />
+            </div>
+          )}
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-6 rounded-xl border border-dashed border-coral/40 bg-coral/5 p-4">
+    <p class="text-sm font-medium text-coral">عالق في درس؟</p>
+    <p class="mt-1 text-sm text-slate-600">احجز جلسة مع مدرس يرى تقدّمك ونقاط ضعفك</p>
+  </div>
+</div>
