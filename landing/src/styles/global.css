@@ -1,13 +1,13 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-navy: #0f172a;
-  --color-navy-light: #1e293b;
-  --color-teal: #14b8a6;
-  --color-teal-dark: #0d9488;
-  --color-coral: #f97316;
-  --color-cream: #faf9f7;
-  --color-muted: #64748b;
+  --color-navy: #1c1917;
+  --color-navy-light: #292524;
+  --color-teal: #eab308;
+  --color-teal-dark: #ca8a04;
+  --color-coral: #f59e0b;
+  --color-cream: #fffbeb;
+  --color-muted: #78716c;
   --font-sans: 'IBM Plex Sans Arabic', system-ui, sans-serif;
 }
 
